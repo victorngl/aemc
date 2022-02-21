@@ -9,3 +9,5 @@
 
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('alunos') }}'><i class='nav-icon la la-question'></i> Alunos</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('autorizados') }}'><i class='nav-icon la la-question'></i> Autorizados</a></li>
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('turma') }}'><i class='nav-icon la la-question'></i> Turmas</a></li>

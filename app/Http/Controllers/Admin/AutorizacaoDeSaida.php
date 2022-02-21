@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Alunos;
 use App\Models\Autorizados;
+use App\Models\Turma;
+
 
 class AutorizacaoDeSaida extends Controller
 {
@@ -28,11 +30,17 @@ class AutorizacaoDeSaida extends Controller
      */
     public function dashboard()
     {
-        $this->data['title'] = 'Autorizacao de Saida'; // set the page title
+
+        $turmas = Turma::all();
+        $alunos = Alunos::all();
+
+        $this->data['$turma_array'] = 'Autorização de Saída'; // set the page title
         $this->data['breadcrumbs'] = [
             trans('backpack::crud.admin')     => backpack_url('autorizacaodesaida'),
             trans('backpack::base.dashboard') => false,
         ];
+        $this->data['turmas'] = $turmas;
+        $this->data['alunos'] = $alunos;
 
         return view(backpack_view('autorizacaodesaida'), $this->data);
     }
@@ -45,6 +53,12 @@ class AutorizacaoDeSaida extends Controller
         Alunos::truncate();
 
         Excel::import(new EnqueteImport(), $path);
+
+        $turmas = Turma::all();
+        $alunos = Alunos::all();
+
+        $this->data['turmas'] = $turmas;
+        $this->data['alunos'] = $alunos;
 
         return view(backpack_view('autorizacaodesaida'), $this->data);
     }

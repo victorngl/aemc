@@ -20,4 +20,6 @@ Route::group([
     Route::post('autorizacaodesaida', 'AutorizacaoDeSaida@tratararquivo')->name('backpack.tratararquivo');
     Route::crud('alunos', 'AlunosCrudController');
     Route::crud('autorizados', 'AutorizadosCrudController');
+    Route::crud('turma', 'TurmaCrudController');
+    Route::get('autorizados/{id}','AutorizadosController@index');
 }); // this should be the absolute last line of this file

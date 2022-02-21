@@ -4,6 +4,9 @@ namespace App\Imports;
 
 use App\Models\Autorizados;
 use App\Models\Alunos;
+use App\Models\Turma;
+
+use Illuminate\Database\Eloquent\Model;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Imports\HeadingRowFormatter;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -68,11 +71,15 @@ class EnqueteImport implements ToModel, WithHeadingRow, HasReferencesToOtherShee
                 array_push($retorno, $autorizado4);
             }
 
+            $turma = Turma::where('name',$row['Turma'])->get('id');
+
             $aluno = new Alunos([
                 'naluno' => $row['RA do Aluno'],
                 'nome' => $row['Aluno'],
-                'turma' => $row['Turma'],
+                'id_turma' => $turma[0]['id'],
             ]);
+
+
             array_push($retorno, $aluno);
 
             return $retorno;

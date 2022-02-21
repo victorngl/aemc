@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
-
-class Autorizados extends Model
+class Turma extends Model
 {
     use CrudTrait;
 
@@ -16,20 +16,11 @@ class Autorizados extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'autorizados';
+    protected $table = 'turmas';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    // protected $fillable = [];
-
-    protected $fillable = [
-        'nome',
-        'cpf',
-        'parentesco',
-        'telefone',
-        'naluno',
-    ];
-
+    protected $fillable = ['id', 'name'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -62,4 +53,5 @@ class Autorizados extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+
 }

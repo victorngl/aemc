@@ -26,7 +26,7 @@ class Alunos extends Model
     protected $fillable = [
         'naluno',
         'nome',
-        'turma',
+        'id_turma',
     ];
 
     /*
@@ -40,7 +40,9 @@ class Alunos extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function turma() {
+        return $this->hasOne(Turma::class, 'id_turma');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

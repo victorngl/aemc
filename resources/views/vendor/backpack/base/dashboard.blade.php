@@ -9,6 +9,5 @@
         'button_text' => trans('backpack::base.logout'),
     ];
 @endphp
-<h1>aaaaaaaaaaaaaaaaaaaaaaa</h1>
 @section('content')
 @endsection
