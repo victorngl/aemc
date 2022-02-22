@@ -41,7 +41,11 @@ class Alunos extends Model
     |--------------------------------------------------------------------------
     */
     public function turma() {
-        return $this->hasOne(Turma::class, 'id_turma');
+        return $this->hasOne(Turma::class, 'id', 'id_turma');
+    }
+
+    public function autorizados() {
+        return $this->hasMany(Autorizados::class, 'naluno', 'naluno');
     }
     /*
     |--------------------------------------------------------------------------

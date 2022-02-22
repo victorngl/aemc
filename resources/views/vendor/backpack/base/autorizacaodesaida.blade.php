@@ -25,13 +25,12 @@
                                         </ul>
                                         <div class="tab-content" id="pills-tabContent">
                                             @foreach($turmas as $turma)
-                                                @php $turmanome = strstr($turma->name, '/2022', true) @endphp
+                                                @php $turmanome = strstr($turma->name, '/2022', true); @endphp
+
                                                 <div class="tab-pane fade" id="a{{$turmanome}}" role="tabpanel" aria-labelledby="{{$turmanome}}">
-                                                   @foreach($alunos as $aluno)
-                                                       @if($aluno->id_turma == $turma->id)
+                                                   @foreach($turma->alunos as $aluno)
                                                             <a href="/admin/autorizados/{{$aluno->naluno}}">{{$aluno->nome}}</a>
                                                            <hr>
-                                                        @endif
                                                     @endforeach
                                                 </div>
                                             @endforeach
@@ -58,8 +57,8 @@
                                         <div class="card-footer">
                                             <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-dot-circle-o"></i>Enviar</button>
                                         </div>
+                                    </form>
                                 </div>
-                                         </form>
                             </div>
                     </div>
                 </div>

@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header"><h5>Autorizados a retirar o aluno: </h5> {{ $aluno[0]->nome}}</div>
+        <div class="card-header"><h5>Autorizados a retirar o aluno: </h5> {{ $aluno->nome}}<br><small>Turma: {{ $aluno->turma->name }}</small></div>
         <div class="card-body">
             <div id="accordion" role="tablist">
                 @php $count = 0 @endphp
-                @foreach($autorizados as $autorizado)
+                @foreach($aluno->autorizados as $autorizado)
                     @php $count++ @endphp
                 <div class="card mb-0">
                     <div class="card-header" id="heading{{$count}}" role="tab">

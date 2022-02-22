@@ -35,7 +35,9 @@ class Turma extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function alunos() {
+        return $this->hasMany(Alunos::class, 'id_turma', 'id');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
