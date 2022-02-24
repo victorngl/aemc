@@ -26,7 +26,7 @@ class EnqueteImport implements ToModel, WithHeadingRow, HasReferencesToOtherShee
     {
         $retorno = array();
 
-        if ($row['1 - Nome - Autorizado 1'] != null && $row['3 - Parentesco - Autorizado 1'] != null && $row['2 - CPF - Autorizado 1'] != null && $row['4 - Telefone - Autorizado 1'] != null) {
+        if ($row['1 - Nome - Autorizado 1'] != null) {
             if (Autorizados::where('nome', 'like', $row['1 - Nome - Autorizado 1'])->get()->first() == null &&
                 Autorizados::where('naluno', '=', $row['RA do Aluno'])->get()->first() == null) {
                 $autorizado = new Autorizados([
@@ -41,7 +41,7 @@ class EnqueteImport implements ToModel, WithHeadingRow, HasReferencesToOtherShee
                 array_push($retorno, $autorizado);
             }
 
-        if ($row['5 - Nome - Autorizado 2'] != null && $row['7 - Parentesco - Autorizado 2'] != null && $row['6 - CPF - Autorizado 2'] != null && $row['8 - Telefone - Autorizado 2'] != null) {
+        if ($row['5 - Nome - Autorizado 2'] != null) {
             if (Autorizados::where('nome', 'like', $row['5 - Nome - Autorizado 2'])->get()->first() == null &&
                 Autorizados::where('naluno', '=', $row['RA do Aluno'])->get()->first() == null) {
                 $autorizado2 = new Autorizados([
@@ -58,7 +58,7 @@ class EnqueteImport implements ToModel, WithHeadingRow, HasReferencesToOtherShee
 
         }
 
-        if ($row['9 - Nome - Autorizado 3'] != null && $row['11 - Parentesco - Autorizado 3'] != null && $row['10 - CPF - Autorizado 3'] != null && $row['12 - Telefone - Autorizado 3'] != null) {
+        if ($row['9 - Nome - Autorizado 3'] != null) {
             if (Autorizados::where('nome', 'like', $row['9 - Nome - Autorizado 3'])->get()->first() == null &&
                 Autorizados::where('naluno', '=', $row['RA do Aluno'])->get()->first() == null) {
                 $autorizado3 = new Autorizados([
@@ -75,7 +75,7 @@ class EnqueteImport implements ToModel, WithHeadingRow, HasReferencesToOtherShee
 
         }
 
-        if ($row['13 - Nome - Autorizado 4'] != null && $row['15 - Parentesco - Autorizado 4'] != null && $row['14 - CPF - Autorizado 4'] != null && $row['16 - Telefone - Autorizado 4'] != null) {
+        if ($row['13 - Nome - Autorizado 4'] != null) {
             if (Autorizados::where('nome', 'like', $row['13 - Nome - Autorizado 4'])->get()->first() == null &&
                 Autorizados::where('naluno', '=', $row['RA do Aluno'])->get()->first() == null) {
                 $autorizado4 = new Autorizados([
