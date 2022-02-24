@@ -16,9 +16,9 @@ class Alunos extends Model
     */
 
     protected $table = 'alunos';
-    // protected $primaryKey = 'id';
+    protected $primaryKey = 'naluno';
     // public $timestamps = false;
-    protected $guarded = ['id'];
+    protected $guarded = ['naluno'];
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];

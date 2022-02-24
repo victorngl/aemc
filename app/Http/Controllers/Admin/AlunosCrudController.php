@@ -40,7 +40,7 @@ class AlunosCrudController extends CrudController
     protected function setupListOperation()
     {
         //CRUD::column('created_at');
-        CRUD::column('id');
+        //CRUD::column('id');
         CRUD::column('naluno');
         CRUD::column('nome');
         CRUD::column('id_turma');

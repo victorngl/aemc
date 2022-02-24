@@ -28,6 +28,7 @@ class Autorizados extends Model
         'parentesco',
         'telefone',
         'naluno',
+        'criadonosistema',
     ];
 
     // protected $hidden = [];
@@ -44,7 +45,10 @@ class Autorizados extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function aluno()
+    {
+        return $this->belongsTo(Alunos::class, 'naluno');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

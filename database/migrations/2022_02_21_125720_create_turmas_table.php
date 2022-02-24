@@ -10,6 +10,7 @@ class CreateTurmasTable extends Migration
      *
      * @return void
      */
+
     public function up()
     {
         Schema::create('turmas', function (Blueprint $table) {

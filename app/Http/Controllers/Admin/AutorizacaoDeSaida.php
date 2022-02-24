@@ -46,8 +46,10 @@ class AutorizacaoDeSaida extends Controller
     {
         $path = $request->enquetefile->storeAs('enquete', 'enquete.xlsx');
 
-        Autorizados::truncate();
-        Alunos::truncate();
+        //$deleted = Autorizados::where('criadonosistema', false)->delete();
+
+        //Autorizados::truncate();
+        //Alunos::truncate();
 
         Excel::import(new EnqueteImport(), $path);
 

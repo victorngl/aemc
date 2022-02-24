@@ -19,6 +19,7 @@ class CreateAutorizadosTable extends Migration
             $table->string('cpf');
             $table->string('parentesco');
             $table->string('telefone');
+            $table->boolean('criadonosistema')->default(true);
             $table->timestamps();
         });
     }
