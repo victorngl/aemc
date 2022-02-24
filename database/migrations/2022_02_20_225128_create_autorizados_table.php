@@ -16,9 +16,9 @@ class CreateAutorizadosTable extends Migration
             $table->bigIncrements('id')->autoIncrement();
             $table->integer('naluno');
             $table->string('nome');
-            $table->string('cpf');
-            $table->string('parentesco');
-            $table->string('telefone');
+            $table->string('cpf')->nullable();
+            $table->string('parentesco')->nullable();
+            $table->string('telefone')->nullable();
             $table->boolean('criadonosistema')->default(true);
             $table->timestamps();
         });
