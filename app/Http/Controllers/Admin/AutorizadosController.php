@@ -29,7 +29,7 @@ class AutorizadosController extends CrudController
      */
     public function index($id) {
 
-        $aluno = Alunos::find($id)->get()->first();
+        $aluno = Alunos::where('naluno', $id)->get()->first();
         $this->data['aluno'] = $aluno;
 
         return view(backpack_view('autorizados'), $this->data);

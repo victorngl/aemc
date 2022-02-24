@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header"><h5>Autorizados a retirar o aluno: </h5> {{ $aluno->nome}}<br><small>Turma: {{ $aluno->turma->name }}</small></div>
+        <div class="card-header"><h5>Autorizados a retirar o aluno: </h5> {{ $aluno->nome}}<br><small>Turma: {{ $aluno->turma->name }}</small><hr>Pode ir embora sozinho: {{ $aluno->saidasozinho }}<hr>Pode sair pra almoçar no contraturno: {{ $aluno->almoco }}<hr>Pode ir embora sozinho após o contraturno: {{ $aluno->saidasozinhocontraturno }}</div>
         <div class="card-body">
             <div id="accordion" role="tablist">
                 @php $count = 0 @endphp

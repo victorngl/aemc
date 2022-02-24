@@ -30,7 +30,6 @@ class Alunos extends Model
         'almoco',
         'saidasozinho',
         'saidasozinhocontraturno',
-
     ];
 
     /*

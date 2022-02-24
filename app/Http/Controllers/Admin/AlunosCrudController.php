@@ -44,6 +44,9 @@ class AlunosCrudController extends CrudController
         CRUD::column('naluno');
         CRUD::column('nome');
         CRUD::column('id_turma');
+        CRUD::column('almoco');
+        CRUD::column('saidasozinho');
+        CRUD::column('saidasozinhocontraturno');
         //CRUD::column('updated_at');
 
         /**
@@ -68,6 +71,9 @@ class AlunosCrudController extends CrudController
         CRUD::field('naluno');
         CRUD::field('nome');
         CRUD::field('turma');
+        CRUD::field('almoco');
+        CRUD::field('saidasozinho');
+        CRUD::field('saidasozinhocontraturno');
        // CRUD::field('updated_at');
 
         /**

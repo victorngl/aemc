@@ -92,29 +92,91 @@ class EnqueteImport implements ToModel, WithHeadingRow, HasReferencesToOtherShee
 
                 }
 
-            if(isset($row['1 - Autorizo meu filho a ir embora sozinho.']) && $row['1 - Autorizo meu filho a ir embora sozinho.'] != null)
-            {
 
-            }
 
             if (Alunos::find($row['RA do Aluno']) == null) {
                 $turma = Turma::where('name', $row['Turma'])->get('id')->first();
-
-                $aluno = new Alunos([
-                    'naluno' => $row['RA do Aluno'],
-                    'nome' => $row['Aluno'],
-                    'id_turma' => $turma['id'],
-                ]);
-
+                $aluno = $this->alunoCreate($row['RA do Aluno'],$row['Aluno'],$turma);
                 array_push($retorno, $aluno);
-
             }
-
 
             return $retorno;
 
         }
 
+        if(isset($row['1 - Autorizo meu filho a ir embora sozinho.']) && $row['1 - Autorizo meu filho a ir embora sozinho.'] != null)
+        {
+            if ($row['4 - Nome - Autorizado 1'] != null) {
+                if (Autorizados::where('nome', 'like', $row['4 - Nome - Autorizado 1'])->get()->first() == null &&
+                    Autorizados::where('naluno', '=', $row['RA do Aluno'])->get()->first() == null) {
+                    $autorizado1 = new Autorizados([
+                        'naluno' => $row['RA do Aluno'],
+                        'nome' => $row['4 - Nome - Autorizado 1'],
+                        'parentesco' => $row['6 - Parentesco - Autorizado 1'],
+                        'cpf' => $row['5 - CPF - Autorizado 1'],
+                        'telefone' => $row['7 - Telefone - Autorizado 1'],
+                        'criadonosistema' => false,
+
+                    ]);
+                    array_push($retorno, $autorizado1);
+                }
+            }
+
+            if ($row['8 - Nome - Autorizado 2'] != null) {
+                if (Autorizados::where('nome', 'like', $row['8 - Nome - Autorizado 2'])->get()->first() == null &&
+                    Autorizados::where('naluno', '=', $row['RA do Aluno'])->get()->first() == null) {
+                    $autorizado2 = new Autorizados([
+                        'naluno' => $row['RA do Aluno'],
+                        'nome' => $row['8 - Nome - Autorizado 2'],
+                        'parentesco' => $row['10 - Parentesco - Autorizado 2'],
+                        'cpf' => $row['9 - CPF - Autorizado 2'],
+                        'telefone' => $row['11 - Telefone - Autorizado 2'],
+                        'criadonosistema' => false,
+
+                    ]);
+                    array_push($retorno, $autorizado2);
+                }
+            }
+
+            if ($row['12 - Nome - Autorizado 3'] != null) {
+                if (Autorizados::where('nome', 'like', $row['12 - Nome - Autorizado 3'])->get()->first() == null &&
+                    Autorizados::where('naluno', '=', $row['RA do Aluno'])->get()->first() == null) {
+                    $autorizado3 = new Autorizados([
+                        'naluno' => $row['RA do Aluno'],
+                        'nome' => $row['12 - Nome - Autorizado 3'],
+                        'parentesco' => $row['14 - Parentesco - Autorizado 3'],
+                        'cpf' => $row['13 - CPF - Autorizado 3'],
+                        'telefone' => $row['15 - Telefone - Autorizado 3'],
+                        'criadonosistema' => false,
+
+                    ]);
+                    array_push($retorno, $autorizado3);
+                }
+            }
+
+            if (Alunos::find($row['RA do Aluno']) == null) {
+                $turma = Turma::where('name', $row['Turma'])->get('id')->first();
+                $aluno = $this->alunoCreate($row['RA do Aluno'],$row['Aluno'],$turma, $row['1 - Autorizo meu filho a ir embora sozinho.'], $row['2 - Autorizo meu filho a sair pra almoçar durante as atividades do Contraturno'], $row['3 - Autorizo meu filho a ir embora sozinho após as atividades do Contraturno.']);
+                array_push($retorno, $aluno);
+            }
+
+            return $retorno;
+        }
     }
 
+    public function alunoCreate(int $ra, $nome, $turma, $almoco = '', $saidasozinho = '', $saidasozinhocontraturno = '')
+    {
+            $aluno = new Alunos([
+                'naluno' => $ra,
+                'nome' => $nome,
+                'id_turma' => $turma['id'],
+                'almoco' => $almoco,
+                'saidasozinho' => $saidasozinho,
+                'saidasozinhocontraturno' => $saidasozinhocontraturno,
+            ]);
+
+            return $aluno;
+    }
 }
+
+
