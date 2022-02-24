@@ -27,6 +27,10 @@ class Alunos extends Model
         'naluno',
         'nome',
         'id_turma',
+        'almoco',
+        'saidasozinho',
+        'saidasozinhocontraturno',
+
     ];
 
     /*

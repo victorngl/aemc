@@ -16,6 +16,9 @@ class CreateAlunosTable extends Migration
             $table->bigInteger('naluno')->primary();
             $table->string('nome');
             $table->integer('id_turma');
+            $table->string('almoco')->default('');
+            $table->string('saidasozinho')->default('');
+            $table->string('saidasozinhocontraturno')->default('');
             $table->timestamps();
         });
     }
