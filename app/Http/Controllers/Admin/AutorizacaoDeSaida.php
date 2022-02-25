@@ -48,8 +48,8 @@ class AutorizacaoDeSaida extends Controller
 
         //$deleted = Autorizados::where('criadonosistema', false)->delete();
 
-        Autorizados::truncate();
-        Alunos::truncate();
+        //Autorizados::truncate();
+        //Alunos::truncate();
 
         Excel::import(new EnqueteImport(), $path);
 
