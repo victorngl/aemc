@@ -5,8 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
-
-class Autorizados extends Model
+class Funcionario extends Model
 {
     use CrudTrait;
 
@@ -16,21 +15,11 @@ class Autorizados extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'autorizados';
+    protected $table = 'funcionarios';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
     // protected $fillable = [];
-
-    protected $fillable = [
-        'nome',
-        'cpf',
-        'parentesco',
-        'telefone',
-        'naluno',
-        'criadonosistema',
-    ];
-
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -45,10 +34,7 @@ class Autorizados extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function aluno()
-    {
-        return $this->hasMany(Alunos::class, 'naluno');
-    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

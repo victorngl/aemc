@@ -29,7 +29,7 @@
 
                                                 <div class="tab-pane fade" id="a{{$turmanome}}" role="tabpanel" aria-labelledby="{{$turmanome}}">
                                                    @foreach($turma->alunos as $aluno)
-                                                            <a href="aemc/public/admin/autorizados/{{$aluno->naluno}}">{{$aluno->nome}}</a>
+                                                            <a href="autorizados/{{$aluno->naluno}}">{{$aluno->nome}}</a>
                                                            <hr>
                                                     @endforeach
                                                 </div>

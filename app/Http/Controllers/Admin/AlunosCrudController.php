@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\AlunosRequest;
+use App\Models\Alunos;
+use App\Models\Turma;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -41,12 +43,25 @@ class AlunosCrudController extends CrudController
     {
         //CRUD::column('created_at');
         //CRUD::column('id');
-        CRUD::column('naluno');
+        $this->crud->addColumn([
+            'name' => 'naluno',
+            'label' => 'Número do Aluno',
+            'type' => 'number',
+        ]);
         CRUD::column('nome');
-        CRUD::column('id_turma');
+        $this->crud->addColumn([
+            'label'     => 'Turma', // Table column heading
+            'type'      => 'select',
+            'name'      => 'id_turma', // the column that contains the ID of that connected entity;
+            'entity'    => 'turma', // the method that defines the relationship in your Model
+            'attribute' => 'name', // foreign key attribute that is shown to user
+            'model'     => "App\Models\Turma", // foreign key model
+        ]);
+
         CRUD::column('almoco');
         CRUD::column('saidasozinho');
         CRUD::column('saidasozinhocontraturno');
+        CRUD::enableExportButtons();
         //CRUD::column('updated_at');
 
         /**
@@ -70,7 +85,17 @@ class AlunosCrudController extends CrudController
         //CRUD::field('id');
         CRUD::field('naluno');
         CRUD::field('nome');
-        CRUD::field('turma');
+        //CRUD::field('turma');
+
+        $this->crud->addField([
+            'name' => 'id_turma',
+            'label' => 'Turma',
+            'type' => 'select',
+            'entity' => 'turma',
+            'attribute' => 'name',
+            'model' => Turma::class,
+        ]);
+
         CRUD::field('almoco');
         CRUD::field('saidasozinho');
         CRUD::field('saidasozinhocontraturno');

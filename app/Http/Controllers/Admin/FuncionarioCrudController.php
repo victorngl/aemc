@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\AutorizadosRequest;
-use App\Models\Autorizados;
-use App\Models\Alunos;
+use App\Http\Requests\FuncionarioRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class AlunosCrudController
+ * Class FuncionarioCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class AutorizadosCrudController extends CrudController
+class FuncionarioCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -28,9 +26,9 @@ class AutorizadosCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Autorizados::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/autorizados');
-        CRUD::setEntityNameStrings('autorizados', 'autorizados');
+        CRUD::setModel(\App\Models\Funcionario::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/funcionario');
+        CRUD::setEntityNameStrings('funcionario', 'funcionarios');
     }
 
     /**
@@ -41,13 +39,13 @@ class AutorizadosCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        //CRUD::column('created_at');
         //CRUD::column('id');
-        CRUD::column('naluno');
-        CRUD::column('nome');
+        CRUD::column('name');
+        CRUD::column('cfp');
+        CRUD::column('email');
         CRUD::column('cpf');
-        CRUD::column('parentesco');
-        CRUD::column('telefone');
+        CRUD::column('rg');
+        //CRUD::column('created_at');
         //CRUD::column('updated_at');
 
         /**
@@ -65,22 +63,16 @@ class AutorizadosCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(AutorizadosRequest::class);
+        CRUD::setValidation(FuncionarioRequest::class);
 
-        //CRUD::field('created_at');
-        //CRUD::field('id');
-        $this->crud->addField([
-            'name' => 'naluno',
-            'label' => 'Aluno',
-            'entity' => 'aluno',
-            'model' => Alunos::class,
-        ]);
-
-        CRUD::field('nome');
+        CRUD::field('id');
+        CRUD::field('name');
+        CRUD::field('cfp');
+        CRUD::field('email');
         CRUD::field('cpf');
-        CRUD::field('parentesco');
-        CRUD::field('telefone');
-       // CRUD::field('updated_at');
+        CRUD::field('rg');
+        //CRUD::field('created_at');
+        //CRUD::field('updated_at');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
