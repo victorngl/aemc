@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\AutorizadosRequest;
 use App\Models\Autorizados;
+use App\Models\Alunos;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -68,7 +69,13 @@ class AutorizadosCrudController extends CrudController
 
         //CRUD::field('created_at');
         //CRUD::field('id');
-        CRUD::field('naluno');
+        $this->crud->addField([
+            'name' => 'naluno',
+            'label' => 'Aluno',
+            'entity' => 'aluno',
+            'model' => Alunos::class,
+        ]);
+
         CRUD::field('nome');
         CRUD::field('cpf');
         CRUD::field('parentesco');

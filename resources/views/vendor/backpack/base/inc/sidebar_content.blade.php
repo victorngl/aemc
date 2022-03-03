@@ -11,3 +11,4 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('autorizados') }}'><i class='nav-icon la la-question'></i> Autorizados</a></li>
 
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('turma') }}'><i class='nav-icon la la-question'></i> Turmas</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('funcionario') }}'><i class='nav-icon la la-question'></i> Funcionarios</a></li>

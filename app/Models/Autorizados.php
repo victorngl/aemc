@@ -47,7 +47,7 @@ class Autorizados extends Model
     */
     public function aluno()
     {
-        return $this->belongsTo(Alunos::class, 'naluno');
+        return $this->hasMany(Alunos::class, 'naluno');
     }
     /*
     |--------------------------------------------------------------------------
